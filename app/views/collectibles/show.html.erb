@@ -1,0 +1,6 @@
+<h1>Collectibles in stock</h1>
+
+<h1><%= @collectible.name %></h1>
+<p><%= @collectible.description %></p>
+<p><%= number_to_currency(@collectible.price) %></p>
+<p><%= @collectible.stock_quantity %> in stock</p>

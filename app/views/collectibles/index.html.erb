@@ -1,0 +1,12 @@
+<h1>Welcome to the Sports Memorabilia Store</h1>
+
+<div class="products">
+  <% @collectibles.each do |collectible| %>
+    <div class="product-card">
+      <h2><%= collectible.name %></h2>
+      <p><%= collectible.description %></p>
+      <p><%= number_to_currency(collectible.price) %></p>
+      <%= link_to 'View Details', collectible_path(collectible), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
