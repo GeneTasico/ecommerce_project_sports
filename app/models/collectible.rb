@@ -1,6 +1,10 @@
 class Collectible < ApplicationRecord
   belongs_to :category
 
+  # Many-to-many relationship to OrderItem
+  has_many :order_items
+  has_many :orders_items, through: :ordered_collectibles
+
   # Validations
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true, length: { maximum: 50 }
