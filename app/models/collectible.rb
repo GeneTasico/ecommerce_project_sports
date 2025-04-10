@@ -11,4 +11,14 @@ class Collectible < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :stock_quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :category_id, presence: true
+
+  # Allows searchable attributes for Ransack
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "created_at", "description", "id", "name", "price", "stock_quantity", "updated_at"]
+  end
+
+  # Allows searchable associations for Ransack
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "order_items", "orders_items"]
+  end
 end

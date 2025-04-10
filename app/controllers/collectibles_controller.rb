@@ -1,4 +1,5 @@
 class CollectiblesController < ApplicationController
+  
   def show
     @collectible = Collectible.find(params[:id])
   end

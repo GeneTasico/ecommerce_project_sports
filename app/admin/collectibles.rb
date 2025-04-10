@@ -1,18 +1,44 @@
 ActiveAdmin.register Collectible do
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :name, :description, :price, :stock_quantity, :category_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name, :description, :price, :stock_quantity, :category_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+    # What admins can change
+    permit_params :name, :description, :price, :stock_quantity, :category_id
+
+    # Filter / Search filters
+    filter :name
+    filter :category
+    filter :price
   
+    # Customizes index/collectibles page
+    index do
+      selectable_column
+      id_column
+      column :name
+      column :description
+      column :price
+      column :category
+      actions
+    end
+  
+    # Form outline to add and edit collectibles
+    form do |f|
+      f.inputs do
+        f.input :name
+        f.input :description
+        f.input :price
+        f.input :stock_quantity
+        f.input :category, as: :select, collection: Category.all, include_blank: false
+      end
+      f.actions
+    end
+    
+    # Show page for each specific collectibles details
+    show do
+      attributes_table do
+        row :name
+        row :description
+        row :price
+        row :stock_quantity
+        row :category
+      end
+    end
 end
