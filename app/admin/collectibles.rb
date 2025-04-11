@@ -31,7 +31,7 @@ ActiveAdmin.register Collectible do
       f.actions
     end
     
-    # Show page for each specific collectibles details
+    # Product page view materials
     show do
       attributes_table do
         row :name
