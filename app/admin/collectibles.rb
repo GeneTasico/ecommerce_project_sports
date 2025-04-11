@@ -3,7 +3,7 @@ ActiveAdmin.register Collectible do
     # What admins can change
     permit_params :name, :description, :price, :stock_quantity, :category_id
 
-    # Filter / Search filters
+    # Search Filters
     filter :name
     filter :category
     filter :price
