@@ -7,6 +7,11 @@ ActiveAdmin.register Collectible do
     filter :name
     filter :category
     filter :price
+
+    # Extra Search Filters
+    scope :all, default: true
+    scope("New Arrivals") { |collectibles| collectibles.new_arrivals }
+    scope("Recently Updated") { |collectibles| collectibles.recently_updated }
   
     # Customizes index/collectibles page
     index do
